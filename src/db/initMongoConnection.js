@@ -12,7 +12,7 @@ export const initMongoConnection = async () => {
 
     await mongoose.connect(connectionString);
 
-    console.log('Mongo connection successfully established!'); 
+    console.log('Mongo connection successfully established!');
   } catch (e) {
     console.error('Mongo connection error:', e.message);
     throw e;
