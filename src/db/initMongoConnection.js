@@ -11,18 +11,9 @@ export const initMongoConnection = async () => {
       `mongodb+srv://${user}:${password}@${url}/${db}?retryWrites=true&w=majority`,
     );
 
-<<<<<<< HEAD
     console.log('Mongo connection successfully established!');
   } catch (error) {
     console.log('Error while setting up mongo connection', error);
     throw error;
-=======
-    await mongoose.connect(connectionString);
-
-    console.log('Mongo connection successfully established!');
-  } catch (e) {
-    console.error('Mongo connection error:', e.message);
-    throw e;
->>>>>>> ed566f0da9a624dcaca0fa21a5f2808b0ffb3cde
   }
 };

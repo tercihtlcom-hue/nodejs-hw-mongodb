@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import { ContactsCollection } from '../db/models/contact.js';
 import { calculatePaginationData } from '../utils/calculatePaginationData.js';
-=======
-import { Contact } from '../db/models/contact.js';
-import mongoose from 'mongoose';
->>>>>>> ed566f0da9a624dcaca0fa21a5f2808b0ffb3cde
 
 export const getAllContacts = async ({
   page,
@@ -44,7 +39,6 @@ export const getAllContacts = async ({
   };
 };
 
-<<<<<<< HEAD
 export const getContactById = async (contactId, userId) => {
   const contact = await ContactsCollection.findOne({ _id: contactId, userId });
   return contact;
@@ -86,12 +80,4 @@ export const deleteContact = async (contactId, userId) => {
   });
 
   return contact;
-=======
-export const getContactById = async (contactId) => {
-  // Geçersiz ID kontrolü
-  if (!mongoose.Types.ObjectId.isValid(contactId)) {
-    return null;
-  }
-  return await Contact.findById(contactId);
->>>>>>> ed566f0da9a624dcaca0fa21a5f2808b0ffb3cde
 };
