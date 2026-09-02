@@ -1,0 +1,40 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Contacts App
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: >
+    REST API for managing personal contacts with authentication, pagination,
+    sorting and filtering.
+tags:
+  - name: Auth
+    description: Authentication and session management endpoints
+  - name: Contacts
+    description: Endpoints for managing contacts
+servers:
+  - url: http://localhost:3000
+  - url: https://nodejs-hw-mongodb.onrender.com
+paths:
+  /auth/register:
+    $ref: ../swagger/paths/auth/register/post.yaml
+  /auth/login:
+    $ref: ../swagger/paths/auth/login/post.yaml
+  /auth/refresh:
+    $ref: ../swagger/paths/auth/refresh/post.yaml
+  /auth/logout:
+    $ref: ../swagger/paths/auth/logout/post.yaml
+  /auth/request-reset-email:
+    $ref: ../swagger/paths/auth/request-reset-email/post.yaml
+  /auth/reset-password:
+    $ref: ../swagger/paths/auth/reset-password/post.yaml
+  /contacts:
+    $ref: ../swagger/paths/contacts/index.yaml
+  /contacts/{contactId}:
+    $ref: ../swagger/paths/contacts/{contactId}/index.yaml
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

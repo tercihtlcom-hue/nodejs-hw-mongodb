@@ -1,0 +1,18 @@
+description: Unauthorized. Access token is missing, invalid or expired.
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        status:
+          type: number
+          example: 401
+        message:
+          type: string
+          example: 'Please provide Authorization header'
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              example: 'Please provide Authorization header'

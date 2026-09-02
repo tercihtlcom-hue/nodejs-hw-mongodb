@@ -1,0 +1,49 @@
+post:
+  tags:
+    - Auth
+  summary: Request a password reset email
+  operationId: requestResetEmail
+  description: Sends an email with a password reset link/token to the provided address.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+              format: email
+              example: 'john.doe@example.com'
+          required:
+            - email
+  responses:
+    '200':
+      description: Successfully sent reset password email.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: number
+                example: 200
+              message:
+                type: string
+                example: 'Reset password email was successfully sent!'
+              data:
+                type: object
+                example: {}
+    '404':
+      description: Not Found. User with the given email does not exist.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: number
+                example: 404
+              message:
+                type: string
+                example: 'User not found'

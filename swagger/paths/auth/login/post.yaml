@@ -1,0 +1,61 @@
+post:
+  tags:
+    - Auth
+  summary: Login user
+  operationId: loginUser
+  description: >
+    Authenticates a user by email and password, creates a session and
+    returns an access token. A refresh token and session id are set as
+    httpOnly cookies.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+              format: email
+              example: 'john.doe@example.com'
+            password:
+              type: string
+              minLength: 6
+              maxLength: 64
+              example: 'mySecretPass123'
+          required:
+            - email
+            - password
+  responses:
+    '200':
+      description: Successfully logged in.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: number
+                example: 200
+              message:
+                type: string
+                example: 'Successfully logged in an user!'
+              data:
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                    example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
+    '401':
+      description: Unauthorized. Wrong email or password.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: number
+                example: 401
+              message:
+                type: string
+                example: 'Invalid email or password'
